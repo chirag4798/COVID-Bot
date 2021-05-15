@@ -4,20 +4,20 @@
 
 **Clone the repository**
 ```
-git clone https://github.com/chirag4798/COVID-bot.git
+$git clone https://github.com/chirag4798/COVID-bot.git
 ```
 
 **Install Dependencies**
 ```
-pip install -r requirements.txt
+$pip install -r requirements.txt
 ```
 
 **Run Actions Server**
 ```
-rasa run actions
+$rasa run actions
 ```
 
 **Run RASA-X server in a new terminal window**
 ```
-rasa x
+$rasa x
 ```
