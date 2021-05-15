@@ -1,0 +1,103 @@
+version: '2.0'
+
+config:
+  store_entities_as_slots: true
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
+
+intents:
+- greet:
+    use_entities: true
+- goodbye:
+    use_entities: true
+- affirm:
+    use_entities: true
+- deny:
+    use_entities: true
+- bot_challenge:
+    use_entities: true
+- covid_help:
+    use_entities: true
+- inform:
+    use_entities: true
+
+entities:
+- zipcode
+- service_type
+
+slots:
+  zipcode:
+    type: rasa.shared.core.slots.TextSlot
+    initial_value: null
+    auto_fill: true
+    influence_conversation: true
+  service_type:
+    type: rasa.shared.core.slots.TextSlot
+    initial_value: null
+    auto_fill: true
+    influence_conversation: true
+
+responses:
+  utter_greet:
+  - text: Hey! Do you need help and support regarding COVID-19?
+  utter_did_that_help:
+  - text: Does this help you?
+  utter_happy:
+  - text: Great, carry on!
+  utter_goodbye:
+  - text: Goodbye!
+  utter_iamabot:
+  - text: I am a COVID-19 Support Bot, powered by Rasa.
+  utter_ask_zipcode:
+  - text: Please provide a pincode for the region where you want COVID help.
+  utter_ask_more:
+  - text: Anything else I can help you with?
+  utter_ask_service:
+  - buttons:
+    - payload: '/inform{{"service_type": "CoVID-19 Testing Lab"}}'
+      title: CoVID-19 Testing Lab
+    - payload: '/inform{{"service_type": "Free Food"}}'
+      title: Free Food
+    - payload: '/inform{{"service_type": "Fundraisers"}}'
+      title: Fundraisers
+    - payload: '/inform{{"service_type": "Hospitals and Centers"}}'
+      title: Hospitals and Centers
+    - payload: '/inform{{"service_type": "Police"}}'
+      title: Police
+    - payload: '/inform{{"service_type": "Government Helpline"}}'
+      title: Government Helpline
+    - payload: '/inform{{"service_type": "Mental well being and Emotional Support"}}'
+      title: Mental well being and Emotional Support
+    - payload: '/inform{{"service_type": "Accommodation and Shelter Homes"}}'
+      title: Accommodation and Shelter Homes
+    - payload: '/inform{{"service_type": "Senior Citizen Support"}}'
+      title: Senior Citizen Support
+    - payload: '/inform{{"service_type": "Transportation"}}'
+      title: Transportation
+    - payload: '/inform{{"service_type": "Community Kitchen"}}'
+      title: Community Kitchen
+    - payload: '/inform{{"service_type": "Ambulance"}}'
+      title: Ambulance
+    - payload: '/inform{{"service_type": "Fire Brigade"}}'
+      title: Fire Brigade
+    - payload: '/inform{{"service_type": "Quarantine Facility"}}'
+      title: Quarantine Facility
+    - payload: '/inform{{"service_type": "Helpline for Cyclone Amphan"}}'
+      title: Helpline for Cyclone Amphan
+    - payload: '/inform{{"service_type": "Fever Clinic"}}'
+      title: Fever Clinic
+    text: Please select the service you want to avail.
+
+actions:
+- utter_greet
+- utter_did_that_help
+- utter_happy
+- utter_goodbye
+- utter_iamabot
+- utter_ask_zipcode
+- utter_ask_service
+- utter_ask_more
+- action_get_information
+forms: {}
+e2e_actions: []

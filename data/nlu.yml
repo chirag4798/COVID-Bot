@@ -1,0 +1,106 @@
+version: "2.0"
+
+nlu:
+- intent: covid_help
+  examples: |
+    - corona help
+    - covid help
+    - need help with information on cvoid-19
+    - need covid guidance
+    - covid support
+    - need covid support
+    - covid help needed
+    - corona virus support required
+
+- intent: inform
+  examples: |
+    - [212378](zipcode)
+    - [315378](zipcode)
+    - pincode: [600024](zipcode)
+    - here's my pincode [100011](zipcode)
+    - Get [Free Food](service_type) resources for [600036](zipcode)
+    - [Hospitals and Centers](service_type) in [500081](zipcode)
+    - Provide help for [300025](zipcode)
+    - zipcode [702456](zipcode)
+    - pincode for my area [552347](zipcode)
+    - get help for [312566](zipcode)
+    - [Free Food](service_type)
+    - [CoVID-19 Testing Lab](service_type) in my area
+    - [Mental well being and Emotional Support](service_type) facility in my locality
+    - [Community Kitchen](service_type) near me
+    - provide information on [Quarantine Facility](service_type)
+    - [Fever Clinic](service_type) info
+    - emergency [Ambulance](service_type) contact information
+    - [Senior Citizen Support](service_type)
+    - [Government Helpline](service_type) for covid
+    - [Transportation](service_type)
+    - [Fire brigade](service_type)
+    - [Accommodation and Shelter Homes](service_type)
+    - [Fundraisers] for covid help
+
+- intent: greet
+  examples: |
+    - hey
+    - hello
+    - hi
+    - hello there
+    - good morning
+    - good evening
+    - moin
+    - hey there
+    - let's go
+    - hey dude
+    - goodmorning
+    - goodevening
+    - good afternoon
+
+- intent: goodbye
+  examples: |
+    - good afternoon
+    - cu
+    - good by
+    - cee you later
+    - good night
+    - bye
+    - goodbye
+    - have a nice day
+    - see you around
+    - bye bye
+    - see you later
+
+- intent: affirm
+  examples: |
+    - yes
+    - yup
+    - indeed
+    - of course
+    - that sounds good
+    - correct
+
+- intent: deny
+  examples: |
+    - no
+    - not
+
+- regex: zipcode
+  examples: |
+    - \d{6}
+    
+- lookup: service_type
+  examples: |
+    - CoVID-19 Testing Lab
+    - Free Food
+    - Fundraisers
+    - Hospitals and Centers
+    - Police
+    - Government Helpline
+    - Mental well being and Emotional Support
+    - Accommodation and Shelter Homes
+    - Senior Citizen Support
+    - Transportation
+    - Community Kitchen
+    - Ambulance
+    - Fire Brigade
+    - Quarantine Facility
+    - Helpline for Cyclone Amphan
+    - Fever Clinic
