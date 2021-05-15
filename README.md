@@ -4,7 +4,7 @@
 
 **Clone the repository**
 ```
-$git clone https://github.com/chirag4798/COVID-bot.git
+$git clone https://github.com/chirag4798/COVID-Bot.git
 ```
 
 **Install Dependencies**
