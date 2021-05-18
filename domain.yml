@@ -1,43 +1,26 @@
 version: '2.0'
-
-config:
-  store_entities_as_slots: true
 session_config:
-  session_expiration_time: 60
+  session_expiration_time: 600
   carry_over_slots_to_new_session: true
-
 intents:
-- greet:
-    use_entities: true
-- goodbye:
-    use_entities: true
-- affirm:
-    use_entities: true
-- deny:
-    use_entities: true
-- bot_challenge:
-    use_entities: true
-- covid_help:
-    use_entities: true
-- inform:
-    use_entities: true
-
+- deny
+- greet
+- covid_help
+- inform
+- goodbye
+- affirm
+- bot_challenge
 entities:
-- zipcode
+- service
 - service_type
-
+- zipcode
 slots:
   zipcode:
-    type: rasa.shared.core.slots.TextSlot
-    initial_value: null
-    auto_fill: true
+    type: text
     influence_conversation: true
   service_type:
-    type: rasa.shared.core.slots.TextSlot
-    initial_value: null
-    auto_fill: true
+    type: text
     influence_conversation: true
-
 responses:
   utter_greet:
   - text: Hey! Do you need help and support regarding COVID-19?
@@ -88,16 +71,17 @@ responses:
     - payload: '/inform{{"service_type": "Fever Clinic"}}'
       title: Fever Clinic
     text: Please select the service you want to avail.
-
 actions:
-- utter_greet
-- utter_did_that_help
-- utter_happy
-- utter_goodbye
-- utter_iamabot
-- utter_ask_zipcode
-- utter_ask_service
-- utter_ask_more
+- action_ask_service
+- action_ask_zipcode
 - action_get_information
-forms: {}
-e2e_actions: []
+- action_reset_service
+- action_reset_zipcode
+- utter_ask_more
+- utter_ask_service
+- utter_ask_zipcode
+- utter_did_that_help
+- utter_goodbye
+- utter_greet
+- utter_happy
+- utter_iamabot

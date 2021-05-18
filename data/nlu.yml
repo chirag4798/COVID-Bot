@@ -1,5 +1,4 @@
 version: "2.0"
-
 nlu:
 - intent: covid_help
   examples: |
@@ -11,7 +10,6 @@ nlu:
     - need covid support
     - covid help needed
     - corona virus support required
-
 - intent: inform
   examples: |
     - [212378](zipcode)
@@ -37,7 +35,10 @@ nlu:
     - [Fire brigade](service_type)
     - [Accommodation and Shelter Homes](service_type)
     - [Fundraisers] for covid help
-
+    - [600024](zipcode)
+    - [400053](zipcode)
+    - [600024](zipcode)
+    - [400053](zipcode)
 - intent: greet
   examples: |
     - hey
@@ -53,7 +54,6 @@ nlu:
     - goodmorning
     - goodevening
     - good afternoon
-
 - intent: goodbye
   examples: |
     - good afternoon
@@ -67,7 +67,6 @@ nlu:
     - see you around
     - bye bye
     - see you later
-
 - intent: affirm
   examples: |
     - yes
@@ -76,16 +75,13 @@ nlu:
     - of course
     - that sounds good
     - correct
-
 - intent: deny
   examples: |
     - no
     - not
-
 - regex: zipcode
   examples: |
     - \d{6}
-    
 - lookup: service_type
   examples: |
     - CoVID-19 Testing Lab

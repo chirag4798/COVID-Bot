@@ -12,6 +12,51 @@ from rasa_sdk.executor import CollectingDispatcher
 remove_new_line = lambda string: re.sub("\n", "", string)
 TOP_N_RESULTS = 10
 
+class ActionAskPincode(Action):
+
+    def name(self) -> Text:
+        return "action_ask_zipcode"
+    
+    def run(self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+        zipcode = tracker.get_slot('zipcode')
+        if zipcode:
+            dispatcher.utter_message(text=f"Do you want help for pincode - {zipcode}. Enter 'yes' to confirm or 'no' to change pincode.")
+            return [SlotSet('zipcode', zipcode)]
+        else:
+            dispatcher.utter_message(template="utter_ask_zipcode")
+            return []
+
+class ActionAskService(Action):
+
+    def name(self) -> Text:
+        return "action_ask_service"
+    
+    def run(self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+        service_type = tracker.get_slot('service_type')
+        if service_type:
+            dispatcher.utter_message(text=f"Do you want help for service - '{service_type}'. Enter 'yes' to confirm or 'no' to change service.")
+            return [SlotSet('service_type', service_type)]
+        else:
+            dispatcher.utter_message(template="utter_ask_service")
+            return []
+
+class ActionResetZipcode(Action):
+
+    def name(self) -> Text:
+        return "action_reset_zipcode"
+    
+    def run(self, dispatcher, tracker, domain): 
+        return[SlotSet("zipcode", None)]
+
+class ActionResetService(Action):
+
+    def name(self) -> Text:
+        return "action_reset_service"
+    
+    def run(self, dispatcher, tracker, domain): 
+        return[SlotSet("service_type", None)]
+
+
 class ActionGetInformation(Action):
 
     def name(self) -> Text:

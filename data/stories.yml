@@ -3,20 +3,16 @@ stories:
 - story: path 1
   steps:
   - intent: covid_help
-  - action: utter_ask_zipcode
+  - action: action_ask_zipcode
   - intent: inform
     entities:
     - zipcode: 600036
-  - action: utter_ask_service
+  - action: action_ask_service
   - intent: inform
     entities:
     - service_type: Accommodation and Shelter Homes
   - action: action_get_information
-  - action: utter_did_that_help
-  - intent: affirm
-  - action: utter_ask_more
-  - intent: deny
-  - action: utter_happy
+
   - intent: goodbye
   - action: utter_goodbye
 
@@ -25,103 +21,141 @@ stories:
   - intent: greet
   - action: utter_greet
   - intent: covid_help
-  - action: utter_ask_zipcode
+  - action: action_ask_zipcode
   - intent: inform
     entities:
     - zipcode: 100024
-  - action: utter_ask_service
+  - action: action_ask_service
   - intent: inform
     entities:
     - service_type: Transportation
   - action: action_get_information
-  - action: utter_did_that_help
-  - intent: affirm
-  - action: utter_ask_more
-  - intent: deny
-  - action: utter_happy
   - intent: goodbye
   - action: utter_goodbye
 
 - story: path 3
   steps:
   - intent: covid_help
-  - action: utter_ask_zipcode
+  - action: action_ask_zipcode
   - intent: inform
     entities:
     - zipcode: 500024
     - service: CoVID-19 Testing Lab
   - action: action_get_information
-  - action: utter_did_that_help
-  - intent: affirm
-  - action: utter_ask_more
-  - intent: deny
-  - action: utter_happy
+
   - intent: goodbye
   - action: utter_goodbye
 
 - story: path 4
   steps:
   - intent: covid_help
-  - action: utter_ask_zipcode
+  - action: action_ask_zipcode
   - intent: inform
     entities:
     - zipcode: 600024
-  - action: utter_ask_service
+  - action: action_ask_service
   - intent: inform
     entities:
     - service_type: Free Food
   - action: action_get_information
-  - action: utter_did_that_help
-  - intent: deny
-  - action: utter_ask_zipcode
-  - intent: inform
-    entities:
-    - zipcode: 600024
-  - action: utter_ask_service
-  - intent: inform
-    entities:
-    - service_type: Free Food
-  - action: action_get_information
-  - action: utter_did_that_help
+  - intent: covid_help
+  - action: action_ask_zipcode
   - intent: affirm
-  - action: utter_ask_more
+  - action: action_ask_service
   - intent: deny
-  - action: utter_happy
+  - action: action_reset_service
+  - action: action_ask_service
+  - intent: inform
+    entities:
+    - service_type: CoVID-19 Testing Lab
+  - action: action_get_information
+
   - intent: goodbye
   - action: utter_goodbye
 
 - story: path 5
   steps:
+  - intent: covid_help
+  - action: action_ask_zipcode
+  - intent: inform
+    entities:
+    - zipcode: 300024
+  - action: action_ask_service
+  - intent: inform
+    entities:
+    - service_type: Free Food
+  - action: action_get_information
+  - intent: covid_help
+  - action: action_ask_zipcode
+  - intent: deny
+  - action: action_reset_zipcode
+  - action: action_ask_zipcode
+  - intent: inform
+    entities: 
+    - zipcode: 400024
+  - action: action_ask_service
+  - intent: deny
+  - action: action_reset_service
+  - action: action_ask_service
+  - intent: inform
+    entities:
+    - service_type: Free Food
+  - action: action_get_information
+  - intent: goodbye
+  - action: utter_goodbye
+
+- story: path 6
+  steps:
+  - intent: covid_help
+  - action: action_ask_zipcode
+  - intent: inform
+    entities:
+    - zipcode: 300024
+  - action: action_ask_service
+  - intent: inform
+    entities:
+    - service_type: Free Food
+  - action: action_get_information
+  - intent: covid_help
+  - action: action_ask_zipcode
+  - intent: deny
+  - action: action_reset_zipcode
+  - action: action_ask_zipcode
+  - intent: inform
+    entities: 
+    - zipcode: 400024
+  - action: action_ask_service
+  - intent: affirm
+  - action: action_get_information
+  - intent: goodbye
+  - action: utter_goodbye
+
+- story: path 7
+  steps:
   - intent: greet
   - action: utter_greet
   - intent: affirm
-  - action: utter_ask_zipcode
+  - action: action_ask_zipcode
   - intent: inform
     entities:
     - zipcode: 500024
-  - action: utter_ask_service
+  - action: action_ask_service
   - intent: inform
     entities:
     - service: CoVID-19 Testing Lab
   - action: action_get_information
-  - action: utter_did_that_help
+  - intent: covid_help
+  - action: action_ask_zipcode
   - intent: affirm
-  - action: utter_ask_more
-  - intent: affirm 
   - action: utter_ask_service
   - intent: inform
     entities:
     - service: Ambulance
   - action: action_get_information
-  - action: utter_did_that_help
-  - intent: affirm
-  - action: utter_ask_more
-  - intent: deny
-  - action: utter_happy
   - intent: goodbye
   - action: utter_goodbye
   
-- story: path 6
+- story: path 8
   steps:
   - intent: greet
   - action: utter_greet
@@ -129,3 +163,229 @@ stories:
   - action: utter_happy
   - intent: goodbye
   - action: utter_goodbye
+
+- story: interactive_story_1
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: affirm
+  - action: action_ask_zipcode
+  - intent: inform
+    entities:
+    - zipcode: '600024'
+  - slot_was_set:
+    - zipcode: '600024'
+  - action: action_ask_service
+  - intent: inform
+    entities:
+    - service_type: CoVID-19 Testing Lab
+  - slot_was_set:
+    - service_type: CoVID-19 Testing Lab
+  - action: action_get_information
+  - slot_was_set:
+    - zipcode: '600024'
+  - slot_was_set:
+    - service_type: CoVID-19 Testing Lab
+  - intent: covid_help
+  - action: action_ask_zipcode
+  - slot_was_set:
+    - zipcode: '600024'
+  - intent: affirm
+  - action: action_ask_service
+  - slot_was_set:
+    - service_type: CoVID-19 Testing Lab
+  - intent: deny
+  - action: action_reset_service
+  - slot_was_set:
+    - service_type: null
+  - action: action_ask_service
+  - intent: inform
+    entities:
+    - service_type: Free Food
+  - slot_was_set:
+    - service_type: Free Food
+  - action: action_get_information
+  - slot_was_set:
+    - zipcode: '600024'
+  - slot_was_set:
+    - service_type: Free Food
+  - intent: covid_help
+  - action: action_ask_zipcode
+  - slot_was_set:
+    - zipcode: '600024'
+  - intent: deny
+  - action: action_reset_zipcode
+  - slot_was_set:
+    - zipcode: null
+  - action: action_ask_zipcode
+  - intent: inform
+    entities:
+    - zipcode: '400053'
+  - slot_was_set:
+    - zipcode: '400053'
+  - action: action_ask_service
+  - intent: deny
+  - action: action_reset_service
+  - action: action_ask_service
+  - intent: inform
+    entities:
+    - service_type: Ambulance
+  - action: action_get_information
+  - slot_was_set:
+    - zipcode: '400053'
+  - slot_was_set:
+    - service_type: Ambulance
+  - intent: covid_help
+  - action: action_ask_zipcode
+  - slot_was_set:
+    - zipcode: '400053'
+  - intent: affirm
+  - action: action_ask_service
+  - slot_was_set:
+    - service_type: Ambulance
+  - intent: deny
+  - action: action_reset_service
+  - slot_was_set:
+    - service_type: null
+  - action: action_ask_service
+  - intent: inform
+    entities:
+    - service_type: Ambulance
+  - slot_was_set:
+    - service_type: Ambulance
+  - action: action_get_information
+  - slot_was_set:
+    - zipcode: '400053'
+  - slot_was_set:
+    - service_type: Ambulance
+
+  - intent: goodbye
+  - action: utter_goodbye
+
+- story: interactive_story_2
+  steps:
+  - intent: covid_help
+  - action: action_ask_zipcode
+  - intent: inform
+    entities:
+    - zipcode: '600024'
+  - slot_was_set:
+    - zipcode: '600024'
+  - action: action_ask_service
+  - intent: inform
+    entities:
+    - service_type: Free Food
+  - slot_was_set:
+    - service_type: Free Food
+  - action: action_get_information
+  - slot_was_set:
+    - zipcode: '600024'
+  - slot_was_set:
+    - service_type: Free Food
+  - intent: covid_help
+  - action: action_ask_zipcode
+  - slot_was_set:
+    - zipcode: '600024'
+  - intent: deny
+  - action: action_reset_zipcode
+  - slot_was_set:
+    - zipcode: null
+  - action: action_ask_zipcode
+  - intent: inform
+    entities:
+    - zipcode: '400053'
+  - slot_was_set:
+    - zipcode: '400053'
+  - action: action_ask_service
+  - slot_was_set:
+    - service_type: Free Food
+  - intent: affirm
+  - action: action_get_information
+  - slot_was_set:
+    - zipcode: '400053'
+  - slot_was_set:
+    - service_type: Free Food
+  - intent: covid_help
+  - action: action_ask_zipcode
+  - slot_was_set:
+    - zipcode: '400053'
+  - intent: affirm
+  - action: action_ask_service
+  - slot_was_set:
+    - service_type: Free Food
+  - intent: deny
+  - action: action_reset_service
+  - slot_was_set:
+    - service_type: null
+  - action: action_ask_service
+  - intent: inform
+    entities:
+    - service_type: CoVID-19 Testing Lab
+  - slot_was_set:
+    - service_type: CoVID-19 Testing Lab
+  - action: action_get_information
+  - slot_was_set:
+    - zipcode: '400053'
+  - slot_was_set:
+    - service_type: CoVID-19 Testing Lab
+  - intent: covid_help
+  - action: action_ask_zipcode
+  - slot_was_set:
+    - zipcode: '400053'
+  - intent: affirm
+  - action: action_ask_service
+  - slot_was_set:
+    - service_type: CoVID-19 Testing Lab
+  - intent: affirm
+  - action: action_get_information
+  - slot_was_set:
+    - zipcode: '400053'
+  - slot_was_set:
+    - service_type: CoVID-19 Testing Lab
+
+  - intent: goodbye
+  - action: utter_goodbye
+
+- story: interactive_story_3
+  steps:
+  - intent: covid_help
+  - action: action_ask_zipcode
+  - intent: inform
+    entities:
+    - zipcode: '600024'
+  - slot_was_set:
+    - zipcode: '600024'
+  - action: action_ask_service
+  - intent: inform
+    entities:
+    - service_type: Free Food
+  - slot_was_set:
+    - service_type: Free Food
+  - action: action_get_information
+  - intent: corona_help
+  - action: action_ask_zipcode
+  - intent: deny
+  - action: action_reset_zipcode
+  - slot_was_set:
+    - zipcode: null
+  - action: action_ask_zipcode
+  - intent: inform
+    entities:
+    - zipcode: '400053'
+  - slot_was_set:
+    - zipcode: '400053'
+  - action: action_ask_service
+  - intent: affirm
+  - action: action_get_information
+  - intent: goodbye
+  - action: utter_goodbye
+
+- story: interactive_story_4
+  steps:
+  - intent: covid_help
+  - action: action_ask_zipcode
+  - intent: inform
+    entities:
+    - zipcode: '400053'
+    - service_type: Community Kitchen
+  - action: action_get_information
